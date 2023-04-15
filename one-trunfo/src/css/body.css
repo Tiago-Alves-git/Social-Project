@@ -1,0 +1,15 @@
+.darkBody {
+  min-height: 100vh;
+  min-width: 100vh;
+  background-image: url(../Images/darkThemeBackGround.jpg);
+  background-size: cover;
+  color: whitesmoke;
+}
+
+.lightBody {
+  min-height: 100vh;
+  min-width: 100vh;
+  background-image: url(../Images/lightThemeBg.jpg);
+  background-size: cover;
+}
+

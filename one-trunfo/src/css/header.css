@@ -1,0 +1,17 @@
+.Header {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.HeaderIn {
+  display: flex;
+  height: 95vh;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+}
+
+.HeaderTitle{
+  display: flex;
+}

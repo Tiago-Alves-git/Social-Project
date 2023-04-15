@@ -1,0 +1,20 @@
+.LoginForms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-end;
+}
+
+.signUpButton {
+  height: 40px;
+  width: 100px;
+  align-self: flex-end;
+}
+
+#resultImage {
+  border-radius: 50%;
+}
+
+.resultImage {
+  border-radius: 50%;
+}
