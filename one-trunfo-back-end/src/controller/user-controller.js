@@ -3,8 +3,10 @@ const { generateToken, decodeToken } = require('../utils/auth');
 
 const signUp = async (req, res, next) => {
   const data = req.body;
+  const { path } = req.file;
+  const send = { data, path }
   try {
-    const { dataValues } = await serviceUser.signUp(data);
+    const { dataValues } = await serviceUser.signUp(send);
     const { id } = dataValues;
     const { email, displayName } = data;
     const tkn = generateToken({ displayName, id, email });

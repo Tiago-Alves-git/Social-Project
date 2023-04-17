@@ -50,12 +50,11 @@ class Login extends React.Component {
         body: JSON.stringify(body)
       }).then(async(response)=>{
         if (response.status === 200) {
-          const image = localStorage.getItem('profile')
           const result = await response.json();
           console.log(result, 'afterlogin');
           await setUser({
               ...user,
-              image: image,
+              image: result.result.image,
               loggedIn: true,
               token: `${result.token}`,
           });

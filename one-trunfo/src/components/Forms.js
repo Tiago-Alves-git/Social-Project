@@ -32,12 +32,6 @@ class Forms extends React.Component {
         </div><div className="col-md-1">
             <img src="#" alt="" id="resultImage" style={{ height: '100px', width: '100px' }}></img>
           </div></>) : null}
-  {/* <div className="col-md-2">
-    <label htmlFor="inputImage" className="form-label">Foto de perfil</label>
-    <input type="file" className="form-control" name="image"
-    id="inputImage" accept=".jpg, .jpeg, .png" onChange={ onInputChange } value={ image } >
-    </input>
-  </div> */}
 
   { !isLoginPage ? (
     <div className="col-md-1">

@@ -3,9 +3,9 @@ const { decodeToken } = require('../utils/auth');
 
 const httpErrGen = (status, message) => ({ status, message });
 
-const signUp = async (data) => {
-  const { displayName, email, password, image } = data;
-  console.log(displayName, email, password, image);
+const signUp = async ({data, path}) => {
+  const { displayName, email, password } = data;
+  console.log(displayName, email, password, path );
   const test = await User.findOne({
     where: { email },
   });
@@ -16,7 +16,7 @@ const signUp = async (data) => {
   displayName,
   email,
   password,
-  image,
+  image: `http://localhost:3001/${path}`,
   });
 
   return result;

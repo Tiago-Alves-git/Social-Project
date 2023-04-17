@@ -43,7 +43,7 @@ class HomePage extends React.Component{
     const { posts, loading } = this.state;
     const { user } = this.context;
     return(
-      <>
+      <div className={ theme }>
       { !loading ? (
        <>
        <HeaderIn changeTheme={changeTheme} theme={theme} image={ user.image } />
@@ -65,7 +65,7 @@ class HomePage extends React.Component{
        </div>
        </>
        ) : <div> Carregando... </div> }
-       </>
+       </div>
       
     )
   }

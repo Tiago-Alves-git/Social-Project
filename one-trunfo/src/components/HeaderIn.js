@@ -20,8 +20,8 @@ class HeaderIn extends React.Component{
       <a href="https://localhost:3007/home" className="w3-bar-item w3-button">Jane likes your post</a>
     </div>
   </div>
-  <a href="https://localhost:3007/home" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-    <img src={ image } class="w3-circle" id="profilePic" style={{height: "30px", width:"30px"}} alt="Avatar" />
+  <a href="https://localhost:3007/login" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+    <img src={ image } className="w3-circle profilePic" id="profilePic" style={{height: "30px", width:"30px"}} alt="Avatar" />
   </a>
  </div>
 </div>

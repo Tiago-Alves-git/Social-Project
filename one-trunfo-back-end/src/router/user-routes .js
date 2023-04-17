@@ -3,8 +3,16 @@ const controllerUser = require('../controller/user-controller');
 const { tokenValidate } = require('../middleware/tokenValidate');
 const { validName, validEmail,
   validPassword } = require('../middleware/userValidate');
+const multer = require('multer');
 
-userRoutes.post('/', validEmail, validName, validPassword, controllerUser.signUp);
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => { callback(null, 'uploads') },
+  filename: (req, file, callback) => { callback(null, `${Date.now()}-${file.originalname}`) }
+})
+
+const upload = multer({ storage });
+
+userRoutes.post('/', upload.single('image'), validEmail, validName, validPassword, controllerUser.signUp);
 
 userRoutes.get('/', tokenValidate, controllerUser.findAllUsers);
 

@@ -2,25 +2,25 @@ import React from "react";
 import Header from "../components/Header";
 import Forms from "../components/Forms";
 import UserContext from "../Contexts/userContext";
+import FormData from "form-data";
 
 class SignUp extends React.Component {
   static contextType = UserContext;
-
+  
   constructor(){
     super();
-      this.state = {
-        name:'',
-        email: '',
-        password: '',
-        image: '',
-        token: '',
-      };
+    this.state = {
+      name:'',
+      email: '',
+      password: '',
+      profile: '',
+      token: '',
     };
-
+  };
+  
   onInputChange = async (event) => {
     const { target } = event;
     const { name, type, checked } = event.target;
-    const { setUser, user } = this.context
     if (target.files && target.files[0]){
       let file = document.querySelector('#resultImage');
       let reader = new FileReader();
@@ -29,40 +29,36 @@ class SignUp extends React.Component {
         .src = (`${e.target.result}`)
       }
       reader.readAsDataURL(target.files[0]);
-
-      reader.addEventListener('load', () => {
-        setUser({
-          ...user,
-          image: reader.result,
-        });
-        localStorage.setItem('profile', reader.result)
-      });
+      this.setState({
+        ...this.state,
+        profile: target.files[0],
+      })
     }
     const value = type === 'checkbox' ? checked : event.target.value;
     this.setState({
       [name]: value,
     });
   };
-
+  
   onSaveButtonClick = async (evt) => {
     evt.preventDefault();
-    const { name, email, password, image } = this.state;
-    const body = { displayName: name, email: email, password: password, image: image };
+    const { name, email, password, profile } = this.state;
+    const formData = new FormData();
+    formData.append('image', profile);
+    formData.append('displayName', name);
+    formData.append('email', email);
+    formData.append('password', password);
     fetch('http://localhost:3001/user', {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
+      body: formData
     }).then(async (response)=>{
       if (response.status === 201) {
         const { setUser, user } = this.context
         const result = await response.json();
+        console.log(result);
         await setUser({
             ...user,
             token: `${result.token}`,
-            loggedIn: false,
-            name: name,
-            email: email,
-            password: password,
         });
         this.props.history.push('/login');
       }

@@ -18,3 +18,7 @@
 .resultImage {
   border-radius: 50%;
 }
+
+.profilePic {
+  object-fit: fill;
+}
